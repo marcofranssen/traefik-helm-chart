@@ -72,3 +72,11 @@ tests:
       - equal:
           path: spec.template.metadata.labels.traefik/powpow
           value: podLabels
+  - it: should have an initContainer 'fix-permissions-acme-json' with persistence enabled
+    set:
+      persistence:
+        enabled: true
+    asserts:
+      - equal:
+          path: spec.initContainers[0].name
+          value: fix-permissions-acme-json
